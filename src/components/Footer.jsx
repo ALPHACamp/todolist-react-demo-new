@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -31,13 +32,17 @@ const StyledButton = styled.button`
   }
 `;
 
-const Footer = () => {
+const Footer = ({ numOfTodos }) => {
   return (
     <StyledFooter>
-      <p>剩餘項目數： 0</p>
+      <p>剩餘項目數： {numOfTodos}</p>
       <StyledButton>登出</StyledButton>
     </StyledFooter>
   );
 };
+
+Footer.propTypes = {
+  numOfTodos: PropTypes.number
+}
 
 export default Footer;
