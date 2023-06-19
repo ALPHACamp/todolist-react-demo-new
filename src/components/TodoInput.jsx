@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const StyledAddTodoContainer = styled.div`
   min-height: 52px;
@@ -73,9 +74,9 @@ const StyledAddTodoActionContainer = styled.div`
 
 const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
   return (
-    <StyledAddTodoContainer>
+    <StyledAddTodoContainer className={clsx('', { active: inputValue.length > 0 })}>
       <StyledLabelIcon className="icon" htmlFor="add-todo-input" />
-      <StyledAddTodoActionContainer>
+      <StyledAddTodoActionContainer className={clsx('', { active: inputValue.length > 0 })}>
         <StyledInputContainer>
           <input
             id="add-todo-input"
@@ -84,6 +85,11 @@ const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
             value={inputValue}
             onChange={(event) => {
               onChange?.(event.target.value);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                onKeyDown?.();
+              }
             }}
           />
         </StyledInputContainer>
