@@ -2,6 +2,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import TodoCollection from '../components/TodoCollection';
 import TodoInput from '../components/TodoInput';
+import { useState } from 'react';
 
 const dummyTodos = [
   {
@@ -27,11 +28,16 @@ const dummyTodos = [
 ];
 
 const TodoPage = () => {
+  const [inputValue, setInputValue] = useState('');
+  const handleInput = (value) => {
+    setInputValue(value);
+  };
+
   return (
     <div>
       TodoPage
       <Header username={'User'} />
-      <TodoInput />
+      <TodoInput inputValue={inputValue} onChange={handleInput} />
       <TodoCollection todos={dummyTodos} />
       <Footer />
     </div>
