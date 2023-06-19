@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import CheckActiveIcon from '../assets/images/check-active.svg';
 import CheckCircleIcon from '../assets/images/check-circle.svg';
 import CheckHoverIcon from '../assets/images/check-hover.svg';
+import PropTypes from 'prop-types';
 
 const StyledTaskItem = styled.div`
   min-height: 52px;
@@ -98,14 +99,14 @@ const StyledTaskItem = styled.div`
   }
 `;
 
-const TodoItem = () => {
+const TodoItem = ({ todo, onSave, onDelete, onToggleDone, onChangeMode }) => {
   return (
     <StyledTaskItem>
       <div className="task-item-checked">
         <span className="icon icon-checked" />
       </div>
       <div className="task-item-body">
-        <span className="task-item-body-text">todo</span>
+        <span className="task-item-body-text">{todo.title}</span>
         <input className="task-item-body-input" />
       </div>
       <div className="task-item-action ">
@@ -113,6 +114,14 @@ const TodoItem = () => {
       </div>
     </StyledTaskItem>
   );
+};
+
+TodoItem.propTypes = {
+  todo: PropTypes.object,
+  onSave: PropTypes.func,
+  onDelete: PropTypes.func,
+  onToggleDone: PropTypes.func,
+  onChangeMode: PropTypes.func
 };
 
 export default TodoItem;

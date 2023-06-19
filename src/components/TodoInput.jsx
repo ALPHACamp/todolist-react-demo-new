@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 
 const StyledAddTodoContainer = styled.div`
   min-height: 52px;
@@ -67,7 +68,7 @@ const StyledAddTodoActionContainer = styled.div`
     }
   }
 `;
-const TodoInput = () => {
+const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
   return (
     <StyledAddTodoContainer>
       <StyledLabelIcon className="icon" htmlFor="add-todo-input" />
@@ -79,6 +80,13 @@ const TodoInput = () => {
       </StyledAddTodoActionContainer>
     </StyledAddTodoContainer>
   );
+};
+
+TodoInput.propTypes = {
+  inputValue: PropTypes.string,
+  onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onAddTodo: PropTypes.func
 };
 
 export default TodoInput;

@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import TodoCollection from '../components/TodoCollection';
 import TodoInput from '../components/TodoInput';
 
-// eslint-disable-next-line no-unused-vars
 const dummyTodos = [
   {
     title: 'Learn react-router',
@@ -31,9 +30,9 @@ const TodoPage = () => {
   return (
     <div>
       TodoPage
-      <Header />
+      <Header username={'User'} />
       <TodoInput />
-      <TodoCollection />
+      <TodoCollection todos={dummyTodos} />
       <Footer />
     </div>
   );

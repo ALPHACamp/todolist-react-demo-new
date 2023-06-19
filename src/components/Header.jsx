@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -21,15 +22,19 @@ const StyledGreetingText = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ username }) => {
   return (
     <StyledHeader>
       <h3>Tasks</h3>
       <StyledGreetingText>
-        Hi <span>user</span>
+        Hi <span>{username}</span>
       </StyledGreetingText>
     </StyledHeader>
   );
 };
+
+Header.propTypes = {
+  username: PropTypes.string
+}
 
 export default Header;
