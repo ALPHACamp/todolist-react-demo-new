@@ -72,6 +72,20 @@ const TodoPage = () => {
     setInputValue('');
   };
 
+  const handleToggleDone = (id) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            isDone: !todo.isDone,
+          };
+        }
+        return todo;
+      });
+    });
+  };
+
   return (
     <div>
       TodoPage
@@ -82,7 +96,7 @@ const TodoPage = () => {
         onAddTodo={handleAddTodo}
         onKeyDown={handleKeyDown}
       />
-      <TodoCollection todos={todos} />
+      <TodoCollection todos={todos} onToggleDone={handleToggleDone} />
       <Footer />
     </div>
   );
