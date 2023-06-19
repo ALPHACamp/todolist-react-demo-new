@@ -3,6 +3,7 @@ import CheckActiveIcon from '../assets/images/check-active.svg';
 import CheckCircleIcon from '../assets/images/check-circle.svg';
 import CheckHoverIcon from '../assets/images/check-hover.svg';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const StyledTaskItem = styled.div`
   min-height: 52px;
@@ -101,7 +102,7 @@ const StyledTaskItem = styled.div`
 
 const TodoItem = ({ todo, onSave, onDelete, onToggleDone, onChangeMode }) => {
   return (
-    <StyledTaskItem>
+    <StyledTaskItem className={clsx('', { done: todo.isDone })}>
       <div className="task-item-checked">
         <span className="icon icon-checked" />
       </div>
